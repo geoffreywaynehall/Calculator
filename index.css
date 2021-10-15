@@ -17,8 +17,8 @@ html {
 
 #calculator {
     max-width: 478px;
-    min-width: 327px;
-    margin: 50px auto;
+    margin: 21px auto;
+    padding: 0 21px;
 }
 
 h1 {
@@ -52,4 +52,10 @@ h2 {
 
 .toggle {
     background-color: #232c43;
+}
+
+@media only screen and (max-width: 534px) {
+    #calculator {
+        max-width: 327px;
+    }
 }
