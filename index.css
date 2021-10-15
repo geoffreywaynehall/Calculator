@@ -1,8 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap');
+
 html {
-    background-color: #3B4664;
+    background-color: #3a4764;
     color: white;
+    font-family: Spartan;
+}
+
+.attribution {
+    font-size: 11px;
+    text-align: center;
 }
 
 .attribution a {
     color: lightblue;
+}
+
+#calculator {
+    max-width: 478px;
+    min-width: 327px;
+    margin: 50px auto;
+}
+
+h1 {
+    font-size: 25px;
+    position: relative;
+    display: inline-block;
+}
+
+h2 {
+    font-size: 10px;
+    position: relative;
+    display: inline-block;
+}
+
+.pad {
+    background-color: #232c43;
+    height: 424px;
+}
+
+.screen {
+    background-color: #182034;
+    height: 113px;
+    margin: 10px 0 21px;
+}
+
+.theme {
+    position: relative;
+    display: inline-block;
+    float: right;
+}
+
+.toggle {
+    background-color: #232c43;
 }
