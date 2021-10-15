@@ -4,7 +4,8 @@ import './index.css';
 
 class App extends React.Component {
     state = {
-        theme: 1
+        theme: 1,
+        display: "399,981"
     };
 
     render() {
@@ -14,8 +15,39 @@ class App extends React.Component {
                 <div class="theme">
                     <h2>THEME</h2><h2>1</h2><h2>2</h2><h2>3</h2>
                 </div>
-                <div class="screen"></div>
-                <div class="pad"></div>
+                <div class="screen">
+                    <p class="display">{ this.state.display }</p>
+                </div>
+                <div class="pad">
+                    <div class="row">
+                        <div class="button number">7</div>
+                        <div class="button number">8</div>
+                        <div class="button number">9</div>
+                        <div class="button blue">DEL</div>
+                    </div>
+                    <div class="row">
+                        <div class="button number">4</div>
+                        <div class="button number">5</div>
+                        <div class="button number">6</div>
+                        <div class="button">+</div>
+                    </div>
+                    <div class="row">
+                        <div class="button number">1</div>
+                        <div class="button number">2</div>
+                        <div class="button number">3</div>
+                        <div class="button">-</div>
+                    </div>
+                    <div class="row">
+                        <div class="button">.</div>
+                        <div class="button number">0</div>
+                        <div class="button">/</div>
+                        <div class="button">x</div>
+                    </div>
+                    <div class="row">
+                        <div class="button wide blue">RESET</div>
+                        <div class="button wide red">=</div>
+                    </div>
+                </div>
             </div>    
         );
     }

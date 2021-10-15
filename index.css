@@ -15,10 +15,44 @@ html {
     color: lightblue;
 }
 
+.button {
+    width: 88px;
+    height: 53px;
+    font-size: 15px;
+    background-color: #eae3dc;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    color: #444b5a;
+}
+
+.button.number {
+    font-size: 32px;
+}
+
+.button.blue {
+    background-color: #637097;
+    color: white;
+}
+
+.button.red {
+    background-color: #d03f2f;
+    color: white;
+}
+
+.wide {
+    width: 201px;
+}
+
 #calculator {
     max-width: 478px;
     margin: 21px auto;
     padding: 0 21px;
+}
+
+.display {
+    float: right;
+    font-size: 32px;
 }
 
 h1 {
@@ -35,7 +69,16 @@ h2 {
 
 .pad {
     background-color: #232c43;
-    height: 424px;
+    height: 394px;
+    display: inline-block;
+    position: relative;
+    padding: 10px 0;
+}
+
+.row {
+    margin: 10px 0;
+    position: relative;
+    display: inline-block;
 }
 
 .screen {
