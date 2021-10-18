@@ -21,27 +21,34 @@ html {
     font-size: 15px;
     background-color: #eae3dc;
     position: relative;
-    display: inline-block;
     text-align: center;
     color: #444b5a;
     font-family: Spartan;
     float: left;
     margin: 0 12px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    filter: drop-shadow(0 3px #b4a597);
 }
 
-.button.number {
-    font-size: 32px;
-}
+    .button.number {
+        font-size: 32px;
+    }
 
-.button.blue {
-    background-color: #637097;
-    color: white;
-}
+    .button.blue {
+        background-color: #637097;
+        color: white;
+        filter: drop-shadow(0 3px #404e72);
+    }
 
-.button.red {
-    background-color: #d03f2f;
-    color: white;
-}
+    .button.red {
+        background-color: #d03f2f;
+        color: white;
+        filter: drop-shadow(0 3px #93261a);
+    }
 
 .wide {
     width: 201px;
@@ -56,6 +63,7 @@ html {
 .display {
     float: right;
     font-size: 32px;
+    margin-right: 30px; 
 }
 
 h1 {
@@ -76,6 +84,7 @@ h2 {
     display: inline-block;
     position: relative;
     padding: 10px 0;
+    border-radius: 10px;
 }
 
 .row {
@@ -88,6 +97,7 @@ h2 {
     background-color: #182034;
     height: 113px;
     margin: 10px 0 21px;
+    border-radius: 10px;
 }
 
 .theme {

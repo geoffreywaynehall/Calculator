@@ -20,32 +20,32 @@ class App extends React.Component {
                 </div>
                 <div class="pad">
                     <div class="row">
-                        <button class="button number">7</button>
-                        <button class="button number">8</button>
-                        <button class="button number">9</button>
-                        <button class="button blue">DEL</button>
+                        <div class="button number">7</div>
+                        <div class="button number">8</div>
+                        <div class="button number">9</div>
+                        <div class="button blue">DEL</div>
                     </div>
                     <div class="row">
-                        <button class="button number">4</button>
-                        <button class="button number">5</button>
-                        <button class="button number">6</button>
-                        <button class="button">+</button>
+                        <div class="button number">4</div>
+                        <div class="button number">5</div>
+                        <div class="button number">6</div>
+                        <div class="button">+</div>
                     </div>
                     <div class="row">
-                        <button class="button number">1</button>
-                        <button class="button number">2</button>
-                        <button class="button number">3</button>
-                        <button class="button">-</button>
+                        <div class="button number">1</div>
+                        <div class="button number">2</div>
+                        <div class="button number">3</div>
+                        <div class="button">-</div>
                     </div>
                     <div class="row">
-                        <button class="button">.</button>
-                        <button class="button number">0</button>
-                        <button class="button">/</button>
-                        <button class="button">x</button>
+                        <div class="button">.</div>
+                        <div class="button number">0</div>
+                        <div class="button">/</div>
+                        <div class="button">x</div>
                     </div>
                     <div class="row">
-                        <button class="button wide blue">RESET</button>
-                        <button class="button wide red">=</button>
+                        <div class="button wide blue">RESET</div>
+                        <div class="button wide red">=</div>
                     </div>
                 </div>
             </div>    
