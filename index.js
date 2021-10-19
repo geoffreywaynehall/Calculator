@@ -13,7 +13,12 @@ class App extends React.Component {
             <div id="calculator">
                 <h1>calc</h1>
                 <div class="theme">
-                    <h2>THEME</h2><h2>1</h2><h2>2</h2><h2>3</h2>
+                    <div class="theme-upper">
+                        <h2 class="theme-number">1</h2><h2 class="theme-number">2</h2><h2 class="theme-number">3</h2>
+                    </div>
+                    <div class="theme-lower">
+                        <h2 class="theme-title">THEME</h2><div className="slider"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+                    </div>
                 </div>
                 <div class="screen">
                     <p class="display">{ this.state.display }</p>

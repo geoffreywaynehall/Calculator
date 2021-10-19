@@ -50,6 +50,16 @@ html {
         filter: drop-shadow(0 3px #93261a);
     }
 
+.dot {
+    background-color: #d03f2f;
+    width: 12px;
+    height: 12px;
+    border-radius: 25px;
+    margin: 4px 4px;
+    display: inline-block;
+    position: relative;
+}
+
 .wide {
     width: 201px;
 }
@@ -100,10 +110,37 @@ h2 {
     border-radius: 10px;
 }
 
+.slider {
+    background-color: #232c43;
+    width: 60px;
+    height: 20px;
+    border-radius: 10px;
+    display: inline-block;
+    float: right;
+}
+
 .theme {
     position: relative;
     display: inline-block;
     float: right;
+}
+
+.theme-lower {
+    float: right;
+    clear: right;
+}
+
+.theme-number {
+    margin: 0px 0 0 16px;
+}
+
+.theme-title {
+    margin: 0 12px;
+}
+
+.theme-upper {
+    float: right;
+    width: 71px;
 }
 
 .toggle {
