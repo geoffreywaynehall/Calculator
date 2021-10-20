@@ -10,7 +10,6 @@ class App extends React.Component {
 
     numberPress = (num) => {
         let oldDisplay = this.state.display;
-        console.log(this.countNumerals(oldDisplay));
         if (this.countNumerals(oldDisplay) < 16) {
             if (oldDisplay === "0") {
                 this.setState({
