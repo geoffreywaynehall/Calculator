@@ -10,14 +10,17 @@ class App extends React.Component {
 
     numberPress = (num) => {
         let oldDisplay = this.state.display;
-        if (oldDisplay === "0") {
-            this.setState({
-                display: num
-            });
-        } else {
-            this.setState({
-                display: this.formatDisplay(oldDisplay + num)
-            });
+        console.log(this.countNumerals(oldDisplay));
+        if (this.countNumerals(oldDisplay) < 16) {
+            if (oldDisplay === "0") {
+                this.setState({
+                    display: num
+                });
+            } else {
+                this.setState({
+                    display: this.formatDisplay(oldDisplay + num)
+                });
+            }
         }
     }
 
@@ -37,13 +40,26 @@ class App extends React.Component {
                 display: this.formatDisplay(this.state.display.slice(0, -1))
             });
         }
+    }
 
+    dot = () => {
+        this.setState({
+            display: this.state.display + "."
+        });
     }
 
     formatDisplay = (num) => {
         var str = num.replaceAll(',', '').split(".");
         str[0] = str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         return str.join(".");
+    }
+
+    countNumerals = (num) => {
+        let digitsArr = num.match(/\d+/g);
+        if (digitsArr) {
+            return digitsArr.join("").length;
+        }
+        return 0;
     }
 
     render() {
@@ -81,7 +97,7 @@ class App extends React.Component {
                         <div className="button">-</div>
                     </div>
                     <div className="row">
-                        <div className="button">.</div>
+                        <div className="button" onClick={() => { this.dot(); }}>.</div>
                         <div className="button number" onClick={() => { this.numberPress("0"); }}>0</div>
                         <div className="button">/</div>
                         <div className="button">x</div>
