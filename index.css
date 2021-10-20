@@ -32,6 +32,7 @@ html {
     align-content: center;
     flex-direction: column;
     filter: drop-shadow(0 3px #b4a597);
+    cursor: pointer;
 }
 
     .button.number {
@@ -58,6 +59,7 @@ html {
     margin: 4px 4px;
     display: inline-block;
     position: relative;
+    cursor: pointer;
 }
 
 .wide {
