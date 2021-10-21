@@ -5,7 +5,11 @@ import './index.css';
 class App extends React.Component {
     state = {
         theme: 1,
-        display: "0"
+        display: "0",
+        num1: null,
+        num2: null,
+        opperator: "",
+        result: false
     };
 
     numberPress = (num) => {
@@ -23,9 +27,86 @@ class App extends React.Component {
         }
     }
 
+    opperatorPress = (op) => {
+        this.setState({
+            opperator: op,
+            num1: this.state.display,
+            num2: this.state.num1,
+            display: "0",
+            result: false
+
+        });
+    }
+
+    equal = () => {
+        if (this.state.opperator === "+") {
+            if (this.state.num2 === null) {
+                let result = this.formatDisplay((parseFloat(this.state.num1.replaceAll(',', '')) + parseFloat(this.state.display.replaceAll(',', ''))).toString());
+                this.setState({
+                    num1: result,
+                    num2: this.state.display,
+                    display: result
+                });
+            } else {
+                let result = this.formatDisplay((parseFloat(this.state.display.replaceAll(',', '')) + parseFloat(this.state.num2.replaceAll(',', ''))).toString());
+                this.setState({
+                    num1: result,
+                    display: result
+                });
+            }
+        } else if (this.state.opperator === "-") {
+            if (this.state.num2 === null) {
+                let result = this.formatDisplay((parseFloat(this.state.num1.replaceAll(',', '')) - parseFloat(this.state.display.replaceAll(',', ''))).toString());
+                this.setState({
+                    num1: result,
+                    num2: this.state.display,
+                    display: result
+                });
+            } else {
+                let result = this.formatDisplay((parseFloat(this.state.display.replaceAll(',', '')) - parseFloat(this.state.num2.replaceAll(',', ''))).toString());
+                this.setState({
+                    num1: result,
+                    display: result
+                });
+            }
+        } else if (this.state.opperator === "x") {
+            if (this.state.num2 === null) {
+                let result = this.formatDisplay((parseFloat(this.state.num1.replaceAll(',', '')) * parseFloat(this.state.display.replaceAll(',', ''))).toString());
+                this.setState({
+                    num1: result,
+                    num2: this.state.display,
+                    display: result
+                });
+            } else {
+                let result = this.formatDisplay((parseFloat(this.state.display.replaceAll(',', '')) * parseFloat(this.state.num2.replaceAll(',', ''))).toString());
+                this.setState({
+                    num1: result,
+                    display: result
+                });
+            }
+        } else if (this.state.opperator === "/") {
+            if (this.state.num2 === null) {
+                let result = this.formatDisplay((parseFloat(this.state.num1.replaceAll(',', '')) / parseFloat(this.state.display.replaceAll(',', ''))).toString());
+                this.setState({
+                    num1: result,
+                    num2: this.state.display,
+                    display: result
+                });
+            } else {
+                let result = this.formatDisplay((parseFloat(this.state.display.replaceAll(',', '')) / parseFloat(this.state.num2.replaceAll(',', ''))).toString());
+                this.setState({
+                    num1: result,
+                    display: result
+                });
+            }
+        }
+    }
+
     reset = () => {
         this.setState({
-            display: "0"
+            display: "0",
+            num1: null,
+            opperator: ""
         });
     }
 
@@ -87,23 +168,23 @@ class App extends React.Component {
                         <div className="button number" onClick={() => { this.numberPress("4"); }}>4</div>
                         <div className="button number" onClick={() => { this.numberPress("5"); }}>5</div>
                         <div className="button number" onClick={() => { this.numberPress("6"); }}>6</div>
-                        <div className="button">+</div>
+                        <div className="button" onClick={() => { this.opperatorPress("+"); }}>+</div>
                     </div>
                     <div className="row">
                         <div className="button number" onClick={() => { this.numberPress("1"); }}>1</div>
                         <div className="button number" onClick={() => { this.numberPress("2"); }}>2</div>
                         <div className="button number" onClick={() => { this.numberPress("3"); }}>3</div>
-                        <div className="button">-</div>
+                        <div className="button" onClick={() => { this.opperatorPress("-"); }}>-</div>
                     </div>
                     <div className="row">
                         <div className="button" onClick={() => { this.dot(); }}>.</div>
                         <div className="button number" onClick={() => { this.numberPress("0"); }}>0</div>
-                        <div className="button">/</div>
-                        <div className="button">x</div>
+                        <div className="button" onClick={() => { this.opperatorPress("/"); }}>/</div>
+                        <div className="button" onClick={() => { this.opperatorPress("x"); }}>x</div>
                     </div>
                     <div className="row">
                         <div className="button wide blue" onClick={() => { this.reset(); }}>RESET</div>
-                        <div className="button wide red">=</div>
+                        <div className="button wide red" onClick={() => { this.equal(); }}>=</div>
                     </div>
                 </div>
             </div>    
