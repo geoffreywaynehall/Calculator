@@ -34,7 +34,6 @@ class App extends React.Component {
             num2: null,
             display: "0",
             result: false
-
         });
     }
 
@@ -45,13 +44,15 @@ class App extends React.Component {
                 this.setState({
                     num1: result,
                     num2: this.state.display,
-                    display: result
+                    display: result,
+                    result: true
                 });
             } else {
                 let result = this.formatDisplay((parseFloat(this.state.display.replaceAll(',', '')) + parseFloat(this.state.num2.replaceAll(',', ''))).toString());
                 this.setState({
                     num1: result,
-                    display: result
+                    display: result,
+                    result: true
                 });
             }
         } else if (this.state.opperator === "-") {
@@ -60,13 +61,15 @@ class App extends React.Component {
                 this.setState({
                     num1: result,
                     num2: this.state.display,
-                    display: result
+                    display: result,
+                    result: true
                 });
             } else {
                 let result = this.formatDisplay((parseFloat(this.state.display.replaceAll(',', '')) - parseFloat(this.state.num2.replaceAll(',', ''))).toString());
                 this.setState({
                     num1: result,
-                    display: result
+                    display: result,
+                    result: true
                 });
             }
         } else if (this.state.opperator === "x") {
@@ -75,13 +78,15 @@ class App extends React.Component {
                 this.setState({
                     num1: result,
                     num2: this.state.display,
-                    display: result
+                    display: result,
+                    result: true
                 });
             } else {
                 let result = this.formatDisplay((parseFloat(this.state.display.replaceAll(',', '')) * parseFloat(this.state.num2.replaceAll(',', ''))).toString());
                 this.setState({
                     num1: result,
-                    display: result
+                    display: result,
+                    result: true
                 });
             }
         } else if (this.state.opperator === "/") {
@@ -90,13 +95,15 @@ class App extends React.Component {
                 this.setState({
                     num1: result,
                     num2: this.state.display,
-                    display: result
+                    display: result,
+                    result: true
                 });
             } else {
                 let result = this.formatDisplay((parseFloat(this.state.display.replaceAll(',', '')) / parseFloat(this.state.num2.replaceAll(',', ''))).toString());
                 this.setState({
                     num1: result,
-                    display: result
+                    display: result,
+                    result: true
                 });
             }
         }
