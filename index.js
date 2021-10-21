@@ -31,7 +31,7 @@ class App extends React.Component {
         this.setState({
             opperator: op,
             num1: this.state.display,
-            num2: this.state.num1,
+            num2: null,
             display: "0",
             result: false
 
