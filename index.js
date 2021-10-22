@@ -6,104 +6,118 @@ class App extends React.Component {
     state = {
         theme: 1,
         display: "0",
-        num1: null,
-        num2: null,
+        leftNum: null,
+        rightNum: null,
         opperator: "",
-        result: false
+        result: false,
+        justOpperated: false
     };
 
     numberPress = (num) => {
         let oldDisplay = this.state.display;
         if (this.countNumerals(oldDisplay) < 16) {
-            if (oldDisplay === "0") {
+            if (oldDisplay === "0" || this.state.justOpperated || this.state.result) {
                 this.setState({
-                    display: num
+                    display: num,
+                    result: false,
+                    justOpperated: false
                 });
             } else {
                 this.setState({
-                    display: this.formatDisplay(oldDisplay + num)
+                    display: this.formatDisplay(oldDisplay + num),
+                    result: false,
+                    justOpperated: false
                 });
             }
         }
     }
 
     opperatorPress = (op) => {
-        this.setState({
-            opperator: op,
-            num1: this.state.display,
-            num2: null,
-            display: "0",
-            result: false
-        });
+        if (!this.state.justOpperated) {
+            this.setState({
+                opperator: op,
+                leftNum: this.state.display,
+                rightNum: null,
+                justOpperated: true
+            });
+        }
     }
 
     equal = () => {
         if (this.state.opperator === "+") {
-            if (this.state.num2 === null) {
-                let result = this.formatDisplay((parseFloat(this.state.num1.replaceAll(',', '')) + parseFloat(this.state.display.replaceAll(',', ''))).toString());
+            if (this.state.rightNum === null) {
+                let result = this.formatDisplay((parseFloat(this.state.leftNum.replaceAll(',', '')) + parseFloat(this.state.display.replaceAll(',', ''))).toString());
                 this.setState({
-                    num1: result,
-                    num2: this.state.display,
+                    leftNum: result,
+                    rightNum: this.state.display,
                     display: result,
-                    result: true
+                    result: true,
+                    justOpperated: false
                 });
             } else {
-                let result = this.formatDisplay((parseFloat(this.state.display.replaceAll(',', '')) + parseFloat(this.state.num2.replaceAll(',', ''))).toString());
+                let result = this.formatDisplay((parseFloat(this.state.display.replaceAll(',', '')) + parseFloat(this.state.rightNum.replaceAll(',', ''))).toString());
                 this.setState({
-                    num1: result,
+                    leftNum: result,
                     display: result,
-                    result: true
+                    result: true,
+                    justOpperated: false
                 });
             }
         } else if (this.state.opperator === "-") {
-            if (this.state.num2 === null) {
-                let result = this.formatDisplay((parseFloat(this.state.num1.replaceAll(',', '')) - parseFloat(this.state.display.replaceAll(',', ''))).toString());
+            if (this.state.rightNum === null) {
+                let result = this.formatDisplay((parseFloat(this.state.leftNum.replaceAll(',', '')) - parseFloat(this.state.display.replaceAll(',', ''))).toString());
                 this.setState({
-                    num1: result,
-                    num2: this.state.display,
+                    leftNum: result,
+                    rightNum: this.state.display,
                     display: result,
-                    result: true
+                    result: true,
+                    justOpperated: false
                 });
             } else {
-                let result = this.formatDisplay((parseFloat(this.state.display.replaceAll(',', '')) - parseFloat(this.state.num2.replaceAll(',', ''))).toString());
+                let result = this.formatDisplay((parseFloat(this.state.display.replaceAll(',', '')) - parseFloat(this.state.rightNum.replaceAll(',', ''))).toString());
                 this.setState({
-                    num1: result,
+                    leftNum: result,
                     display: result,
-                    result: true
+                    result: true,
+                    justOpperated: false
                 });
             }
         } else if (this.state.opperator === "x") {
-            if (this.state.num2 === null) {
-                let result = this.formatDisplay((parseFloat(this.state.num1.replaceAll(',', '')) * parseFloat(this.state.display.replaceAll(',', ''))).toString());
+            if (this.state.rightNum === null) {
+                let result = this.formatDisplay((parseFloat(this.state.leftNum.replaceAll(',', '')) * parseFloat(this.state.display.replaceAll(',', ''))).toString());
                 this.setState({
-                    num1: result,
-                    num2: this.state.display,
+                    leftNum: result,
+                    rightNum: this.state.display,
                     display: result,
-                    result: true
+                    result: true,
+                    justOpperated: false
                 });
             } else {
-                let result = this.formatDisplay((parseFloat(this.state.display.replaceAll(',', '')) * parseFloat(this.state.num2.replaceAll(',', ''))).toString());
+                let result = this.formatDisplay((parseFloat(this.state.display.replaceAll(',', '')) * parseFloat(this.state.rightNum.replaceAll(',', ''))).toString());
                 this.setState({
-                    num1: result,
+                    leftNum: result,
                     display: result,
-                    result: true
+                    result: true,
+                    justOpperated: false
                 });
             }
         } else if (this.state.opperator === "/") {
-            if (this.state.num2 === null) {
-                let result = this.formatDisplay((parseFloat(this.state.num1.replaceAll(',', '')) / parseFloat(this.state.display.replaceAll(',', ''))).toString());
+            if (this.state.rightNum === null) {
+                let result = this.formatDisplay((parseFloat(this.state.leftNum.replaceAll(',', '')) / parseFloat(this.state.display.replaceAll(',', ''))).toString());
                 this.setState({
-                    num1: result,
-                    num2: this.state.display,
+                    leftNum: result,
+                    rightNum: this.state.display,
                     display: result,
-                    result: true
+                    result: true,
+                    justOpperated: false
                 });
             } else {
-                let result = this.formatDisplay((parseFloat(this.state.display.replaceAll(',', '')) / parseFloat(this.state.num2.replaceAll(',', ''))).toString());
+                let result = this.formatDisplay((parseFloat(this.state.display.replaceAll(',', '')) / parseFloat(this.state.rightNum.replaceAll(',', ''))).toString());
                 this.setState({
-                    num1: result,
+                    leftNum: result,
                     display: result,
-                    result: true
+                    result: true,
+                    justOpperated: false
                 });
             }
         }
@@ -112,27 +126,38 @@ class App extends React.Component {
     reset = () => {
         this.setState({
             display: "0",
-            num1: null,
-            opperator: ""
+            leftNum: null,
+            rightNum: null,
+            opperator: "",
+            result: false,
+            justOpperated: false
         });
     }
 
     del = () => {
-        if (this.state.display.length === 1) {
-            this.setState({
-                display: "0"
-            });
-        } else {
-            this.setState({
-                display: this.formatDisplay(this.state.display.slice(0, -1))
-            });
+        if (!this.state.justOpperated && !this.state.result) {
+            if (this.state.display.length === 1) {
+                this.setState({
+                    display: "0"
+                });
+            } else {
+                this.setState({
+                    display: this.formatDisplay(this.state.display.slice(0, -1))
+                });
+            }
         }
     }
 
     dot = () => {
-        this.setState({
-            display: this.state.display + "."
-        });
+        if (!this.state.justOpperated && !this.state.result) {
+            this.setState({
+                display: this.state.display + "."
+            });
+        } else {
+            this.setState({
+                display: "0."
+            });
+        }
     }
 
     formatDisplay = (num) => {
