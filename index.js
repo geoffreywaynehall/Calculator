@@ -14,36 +14,60 @@ class App extends React.Component {
     };
 
     numberPress = (num) => {
-        let oldDisplay = this.state.display;
-        if (this.countNumerals(oldDisplay) < 16) {
-            if (oldDisplay === "0" || this.state.justOpperated || this.state.result) {
-                this.setState({
-                    display: num,
-                    result: false,
-                    justOpperated: false
-                });
-            } else {
-                this.setState({
-                    display: this.formatDisplay(oldDisplay + num),
-                    result: false,
-                    justOpperated: false
-                });
+        if (this.state.result) {
+            this.setState({
+                display: num,
+                result: false,
+                leftNum: null,
+                rightNum: null,
+                justOpperated: false
+            });
+        } else {
+            let oldDisplay = this.state.display;
+            if (this.countNumerals(oldDisplay) < 16) {
+                if (oldDisplay === "0" || this.state.justOpperated) {
+                    this.setState({
+                        display: num,
+                        rightNum: null,
+                        result: false,
+                        justOpperated: false
+                    });
+                } else {
+                    this.setState({
+                        display: this.formatDisplay(oldDisplay + num),
+                        result: false,
+                        justOpperated: false
+                    });
+                }
             }
         }
     }
 
     opperatorPress = (op) => {
-        if (!this.state.justOpperated) {
+        console.log(this.state);
+        if (!this.state.result && this.state.leftNum !== null && this.state.justOpperated === false) {
+            this.equal(true);
+            this.setState({
+                opperator: op,
+                justOpperated: true,
+                result: false
+            });
+        }
+        else if (!this.state.justOpperated) {
             this.setState({
                 opperator: op,
                 leftNum: this.state.display,
-                rightNum: null,
-                justOpperated: true
+                justOpperated: true,
+                result: false
+            });
+        } else {
+            this.setState({
+                opperator: op
             });
         }
     }
 
-    equal = () => {
+    equal = (fromOp = false) => {
         if (this.state.opperator === "+") {
             if (this.state.rightNum === null) {
                 let result = this.formatDisplay((parseFloat(this.state.leftNum.replaceAll(',', '')) + parseFloat(this.state.display.replaceAll(',', ''))).toString());
@@ -52,7 +76,7 @@ class App extends React.Component {
                     rightNum: this.state.display,
                     display: result,
                     result: true,
-                    justOpperated: false
+                    justOpperated: fromOp
                 });
             } else {
                 let result = this.formatDisplay((parseFloat(this.state.display.replaceAll(',', '')) + parseFloat(this.state.rightNum.replaceAll(',', ''))).toString());
@@ -60,7 +84,7 @@ class App extends React.Component {
                     leftNum: result,
                     display: result,
                     result: true,
-                    justOpperated: false
+                    justOpperated: fromOp
                 });
             }
         } else if (this.state.opperator === "-") {
@@ -71,7 +95,7 @@ class App extends React.Component {
                     rightNum: this.state.display,
                     display: result,
                     result: true,
-                    justOpperated: false
+                    justOpperated: fromOp
                 });
             } else {
                 let result = this.formatDisplay((parseFloat(this.state.display.replaceAll(',', '')) - parseFloat(this.state.rightNum.replaceAll(',', ''))).toString());
@@ -79,7 +103,7 @@ class App extends React.Component {
                     leftNum: result,
                     display: result,
                     result: true,
-                    justOpperated: false
+                    justOpperated: fromOp
                 });
             }
         } else if (this.state.opperator === "x") {
@@ -90,7 +114,7 @@ class App extends React.Component {
                     rightNum: this.state.display,
                     display: result,
                     result: true,
-                    justOpperated: false
+                    justOpperated: fromOp
                 });
             } else {
                 let result = this.formatDisplay((parseFloat(this.state.display.replaceAll(',', '')) * parseFloat(this.state.rightNum.replaceAll(',', ''))).toString());
@@ -98,7 +122,7 @@ class App extends React.Component {
                     leftNum: result,
                     display: result,
                     result: true,
-                    justOpperated: false
+                    justOpperated: fromOp
                 });
             }
         } else if (this.state.opperator === "/") {
@@ -109,7 +133,7 @@ class App extends React.Component {
                     rightNum: this.state.display,
                     display: result,
                     result: true,
-                    justOpperated: false
+                    justOpperated: fromOp
                 });
             } else {
                 let result = this.formatDisplay((parseFloat(this.state.display.replaceAll(',', '')) / parseFloat(this.state.rightNum.replaceAll(',', ''))).toString());
@@ -117,7 +141,7 @@ class App extends React.Component {
                     leftNum: result,
                     display: result,
                     result: true,
-                    justOpperated: false
+                    justOpperated: fromOp
                 });
             }
         }
